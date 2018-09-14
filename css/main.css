@@ -100,9 +100,39 @@ textarea {
 
 
 
+.container-index {
+  width: 400px;
+  margin: 50px auto !important;
+}
+.container-index .header {
+  border-bottom: 1px solid red !important;
+}
+.blog {
+  border-radius: 8px;
+  padding: 8px;
+  color: black;
+}
+.bottom-blog {
+  border-top: 1px solid green;
+  margin: 20px 0 10px 0;
+}
 
-
-
+.container-blog {
+  margin : 50px auto !important;
+}
+.overlay {
+  padding: 30px;
+  text-align: center;
+}
+.overlay span {
+  margin: 10px !important;
+}
+a {
+  color: black !important;
+}
+.form {
+  padding: 30px !important;
+}
 
 
 

@@ -27,15 +27,18 @@ include("bd.php");
   <![endif]-->
 
   <!-- Add your site or application content here -->
+<div class="ui top right attached label blue massive">
   <a href="index.php">Index</a>
+  <button class="circular ui icon button">
+  <a href="topic.php"><i class="icon plus"></i></a>
+</button>
+</div>
   <?php
   $reponse = $bdd->query('SELECT * FROM billet');
 
 
   while ($donnees = $reponse->fetch()) {
-    $commentary = $bdd->query('SELECT count(*) as total FROM commentary WHERE billet_id=' .$donnees['id'])->fetchColumn();
-
-  ?>
+      $commentary = $bdd->query('SELECT count(*) as total FROM commentary WHERE billet_id=' .$donnees['id'])->fetchColumn(); ?>
   <div class="grid container container-index">
     <div class="ui card">
     <a href="blog.php?index=<?php echo $donnees['id']?>">
@@ -47,14 +50,16 @@ include("bd.php");
       <div class="bottom-blog meta">
         <span class="right floated author">Écrit par : <?php echo $donnees['user']?></span><br>
         <span>Le : <?php echo $donnees['datetime']?></span>
-        <i class="right floated comments icon"><?php echo $commentary?></i>
+        <div class="ui tag labels">
+        <i class="right floated comments icon ui"><?php echo $commentary?></i>
+      </div>
       </div>
      </div>
      </a>
    </div>
  </div>
  <?php
- }
+  }
  $reponse->closeCursor();
   ?>
   <script src="js/vendor/modernizr-3.6.0.min.js"></script>

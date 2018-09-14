@@ -27,12 +27,22 @@ include("bd.php");
   <![endif]-->
 
   <!-- Add your site or application content here -->
-  <a href="index.php">Index</a>
-
+  <div class="ui top right attached label blue massive">
+    <a href="index.php">Index</a>
+  </div>
+<!--  Affiche les topics -->
   <?php
+
+
+
+
+
+
+
+
   $reponse = $bdd->query('SELECT * FROM billet WHERE id=' . $_GET['index']);
   while ($donnees = $reponse->fetch()) {
-  ?>
+      ?>
   <div class="ui text main container">
     <h1 class="ui header"><?php echo $donnees['title'] ?></h1>
  </div>
@@ -48,12 +58,23 @@ include("bd.php");
  </div>
 
  <?php
- }
- $commentary = $bdd->query('SELECT * FROM commentary WHERE billet_id=' .$_GET['index']);
- $index = $_GET['index'];
+  }
 
- while($donnees_commentary = $commentary->fetch()){
-   ?>
+
+
+
+
+
+
+// Affiche les commentaires et l'ajout
+
+$commentary = $bdd->query('SELECT * FROM commentary WHERE billet_id=' . $_GET['index']);
+?>
+<span class="ui header">Commentaires :</span>
+<hr>
+<?php
+     while ($donnees_commentary = $commentary->fetch()) {
+         ?>
    <div class="ui card main container">
      <p class="ui header"><?php echo $donnees_commentary['user'] ?></p>
   <div class="ui container">
@@ -67,10 +88,15 @@ include("bd.php");
   </div>
 
    <?php
- }
- $commentary->closeCursor();
- $reponse->closeCursor();
-  ?>
+     }
+
+
+
+     $commentary->closeCursor();
+     $reponse->closeCursor(); ?>
+
+
+
   <div class="ui main container card">
   <form action="commentary.php?index=<?php echo $_GET['index']?>" method="post" class="ui form">
     <div class="ui input grid container">
@@ -86,6 +112,10 @@ include("bd.php");
    </div>
   </form>
   </div>
+
+
+
+
   <script src="js/vendor/modernizr-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
